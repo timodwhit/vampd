@@ -1,0 +1,90 @@
+<h1>{{role.name}}</h1>
+
+<p>{{role.description}}</p>
+
+<h2>Drupal Information</h2>
+<div ng-repeat="(site_name,site) in role.default_attributes.drupal.sites">
+  <div class="property" >
+    <span class="key">Active:</span>
+    <span class="value">{{site.active}}</span>
+  </div>
+  <div class="property prop-deploy">
+    <div class="key">Deploy Actions</div>
+    <ul class="value" >
+      <li ng-repeat="action in site.deploy.action">{{action}}</li>
+    </ul>
+    <dl>
+      <dt>Relases</dt>
+      <dd>{{site.deploy.releases}}</dd>
+    </dl>
+  </div>
+
+  <h3 ng-show="site.drush_make != null">Drush Make</h3>
+  <dl ng-show="site.drush_make != null">
+    <dt>API</dt>
+    <dd>{{site.drush_make.api}}</dd>
+    <dt>Files</d>
+    <dd>
+      <dl ng-repeat="(file_name, file) in site.drush_make.files">
+        <dt>{{file_name}}:</dt>
+        <dd>{{file}}</dd>
+      </dl>
+    <dd>
+  </dl>
+
+  <h3>Drupal Settings</h3>
+  <dl>
+    <dt>Profile</dt>
+    <dd ng-show="site.drupal.settings.profile.lenngth">{{site.drupal.settings.profile}}</dd>
+    <dd ng-hide="!!site.drupal.settings.profile.length">standard</dd>
+    <dt>Files</dt>
+    <dd ng-show="site.drupal.settings.files.length">{{site.drupal.settings.files}}</dd>
+    <dd ng-hide="!!site.drupal.settings.files.length">{{site.drupal.settings.docroot}}/sites/default/files</dd>
+    <dt>Docroot:</dt>
+    <dd>{{site.drupal.settings.docroot}}</dd>
+    <dt>Cookbook</dt>
+    <dd>{{site.drupal.settings.cookbook}}</dd>
+    <dt>Settings</dt>
+    <dd>
+      <dl ng-repeat="(setting_name, setting) in site.drupal.settings.settings">
+        <dt>{{setting_name}}:</dt>
+        <dd>{{setting.location}}</dd>
+      </dl>
+    <dd>
+  </dl>
+
+  <h4>Database settings</h4>
+  <dl>
+    <dt>Database Name</dt>
+    <dd>{{site.drupal.settings.db_name}}</dd>
+    <dt>Database Host</dt>
+    <dd>{{site.drupal.settings.db_host}}</dd>
+    <dt>Database Prefix</dt>
+    <dd>{{site.drupal.settings.db_prefix}}</dd>
+    <dt>Database Driver</dt>
+    <dd>{{site.drupal.settings.db_driver}}</dd>
+    <dt>Database File</dt>
+    <dd>{{site.drupal.settings.db_file}}</dd>
+  </dl>
+  <h3> Repository Settings</h3>
+  <dl>
+    <dt>Host</dt>
+    <dd>{{site.repository.host}}</dd>
+    <dt>URI</dt>
+    <dd>{{site.repository.uri}}</dd>
+    <dt>Revision</dt>
+    <dd>{{site.repository.revision}}</dd>
+    <dt>Submodule</dt>
+    <dd>{{site.repository.submodule}}</dd>
+    <dt>Remotes</dt>
+    <dd ng-repeat="(remote_name, remote) in site.repository.remotes">
+      {{remote_name}} / {{remote}}
+    </dd>
+  </dl>
+  <h3>Web App</h3>{{site.web_app}}
+    <dd ng-repeat="(port_name, port) in site.web_app">
+      <tr ng-repeat="(key, value) in port">
+  <td> {{key}} </td> <td> {{ value }} </td>
+</tr>
+    </dl>
+</div>
