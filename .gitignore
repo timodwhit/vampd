@@ -22,3 +22,11 @@ doc/
 .vagrant
 
 .DS_Store
+
+#Angular stuff
+logs/*
+!.gitkeep
+.idea
+vampd-snapshots
+bower_components/
+node_modules/
