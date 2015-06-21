@@ -19,10 +19,16 @@
     "recipe[drupal::mysql]",
     "recipe[drupal]",
     "recipe[drupal-nfs]",
-    // "recipe[drupal-frontend]",
+    "recipe[grunt_cookbook]",
+    "recipe[drupal-frontend]",
+    // "recipe[solr]",
     // "recipe[drupal-solr]",
     // "recipe[samba]",
     // "recipe[samba::server]",
+    "recipe[vampd-developer::codesniff]",
+    "recipe[vampd-developer::zsh]",
+    "recipe[vampd-developer::copy]",
+    // "recipe[vampd-developer::xdebug]",
     "recipe[drupal::perms]"
   ]
 }

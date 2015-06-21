@@ -38,7 +38,7 @@ Vagrant.configure("2") do |config|
     end
 
     server.vm.provider :virtualbox do |v|
-      v.name = "vampd"
+      v.name = "vampd-test"
       v.customize ["modifyvm", :id, "--memory", "1024"]
     end
 
